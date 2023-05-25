@@ -28,15 +28,15 @@ class ScrapeDataCommand extends Command
      */
     public function handle()
     {
-        // Instantiate and execute each scraper class
+//         Instantiate and execute each scraper class
         $newsAPIScraper = new NewsAPIScraper();
         $newsAPIScraper->scrape();
 
-//        $guardianScraper = new GuardianScraper();
-//        $guardianScraper->scrape();
-//
-//        $nyTimesScraper = new NYTimesScraper();
-//        $nyTimesScraper->scrape();
+        $guardianScraper = new GuardianScraper();
+        $guardianScraper->scrape();
+
+        $nyTimesScraper = new NYTimesScraper();
+        $nyTimesScraper->scrape();
 
         $this->info('Data scraping completed!');
     }

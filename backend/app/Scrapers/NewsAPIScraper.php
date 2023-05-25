@@ -40,7 +40,7 @@ class NewsAPIScraper
             // Create a new Article instance and populate its attributes
             $article = new Article();
             $article->title = $articleData['title'];
-            $article->body = $articleData['content'];
+            $article->body = $articleData['description'];
             $article->author = $articleData['author'];
             $article->images = $articleData['urlToImage'];
             $article->published_at = $articleData['publishedAt'];

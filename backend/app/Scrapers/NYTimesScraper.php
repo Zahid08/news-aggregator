@@ -13,7 +13,7 @@ class NYTimesScraper
     public function __construct()
     {
         $this->client = new Client();
-        $this->apiKey = 'YOUR_NYTIMES_API_KEY';
+        $this->apiKey = 'VlhNVUDkTcqEDYSaYuu6vAgX8ZGS9Clb';
     }
 
     public function scrape()
@@ -39,11 +39,11 @@ class NYTimesScraper
             // Create a new Article instance and populate its attributes
             $article = new Article();
             $article->title = $articleData['title'];
-            $article->body = $articleData['content'];
-            $article->author = $articleData['author'];
-            $article->images = $articleData['urlToImage'];
-            $article->published_at = $articleData['publishedAt'];
-            $article->category_name = $articleData['source']['name'];
+            $article->body = $articleData['abstract'];
+            $article->author = $articleData['byline'];
+            $article->images = $articleData['multimedia'][0]['url'];
+            $article->published_at = $articleData['published_date'];
+            $article->category_name = $articleData['subsection'];
             $article->source_name ='NYTimes';
             $article->url = $articleData['url'];
             $article->api_type = 3;

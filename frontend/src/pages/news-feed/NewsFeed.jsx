@@ -49,7 +49,9 @@ const NewsFeed = () => {
     if (!userState.userInfo) {
       navigate("/");
     }
-    setDataSourceCheckboxItem(userState.userInfo.interested);
+    if (userState.userInfo.interested) {
+      setDataSourceCheckboxItem(userState.userInfo.interested);
+    }
   }, [navigate, userState.userInfo]);
 
   const {
@@ -67,7 +69,7 @@ const NewsFeed = () => {
   };
 
   const handelDataSourceCheckbox = (item) => {
-    const isChecked = dataSourceCheckboxItem.includes(item);
+    const isChecked = (dataSourceCheckboxItem && dataSourceCheckboxItem.includes(item));
     if (isChecked) {
       // Item is already checked, remove it from the checkedItems array
       setDataSourceCheckboxItem(dataSourceCheckboxItem.filter((checkedItem) => checkedItem !== item));
@@ -93,7 +95,7 @@ const NewsFeed = () => {
                           type="checkbox"
                           id={`checkbox-${item}`}
                           className="text"
-                          checked={dataSourceCheckboxItem.includes(item)}
+                          checked={item !== undefined && dataSourceCheckboxItem && dataSourceCheckboxItem.includes(item)}
                           onChange={() => handelDataSourceCheckbox(item)}
                       />
                       <label
@@ -114,7 +116,7 @@ const NewsFeed = () => {
                           type="checkbox"
                           id={`checkbox-${item}`}
                           className="text"
-                          checked={dataSourceCheckboxItem.includes(item)}
+                          checked={item !== undefined && dataSourceCheckboxItem && dataSourceCheckboxItem.includes(item)}
                           onChange={() => handelDataSourceCheckbox(item)}
                       />
                       <label
@@ -135,7 +137,7 @@ const NewsFeed = () => {
                           type="checkbox"
                           id={`checkbox-${item}`}
                           className="text"
-                          checked={dataSourceCheckboxItem.includes(item)}
+                          checked={item !== undefined && dataSourceCheckboxItem && dataSourceCheckboxItem.includes(item)}
                           onChange={() => handelDataSourceCheckbox(item)}
                       />
                       <label
