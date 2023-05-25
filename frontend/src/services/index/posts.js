@@ -1,18 +1,30 @@
 import axios from "axios";
 
-export const getAllPosts = async ({ token }) => {
+export const getAllPosts = async ({ token,searchData }) => {
   try {
+
     if (token!='') {
       const config = {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       };
-      const { data } = await axios.get("/api/personalizedArticle", config);
-      return data.data;
+      if (searchData.searchQuery!=''){
+        console.log("AAA")
+        const { data } = await axios.get("/api/personalizedArticle?params="+searchData.searchQuery, config);
+        return data.data;
+      }else {
+        const { data } = await axios.get("/api/personalizedArticle", config);
+        return data.data;
+      }
     }else{
-      const {data} = await axios.get("/api/articles");
-      return data.data;
+      if (searchData.searchQuery!=''){
+        const {data} = await axios.get("/api/articles?params="+searchData.searchQuery);
+        return data.data;
+      }else {
+        const {data} = await axios.get("/api/articles");
+        return data.data;
+      }
     }
   } catch (error) {
     if (error.response && error.response.data.message)

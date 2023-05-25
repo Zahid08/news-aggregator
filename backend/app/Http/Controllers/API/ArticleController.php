@@ -18,9 +18,12 @@ class ArticleController extends Controller
      */
     public function index(Request $request)
     {
+
+
         // Retrieve the source and publish date parameters from the request
         $source = $request->query('source_name');
         $publishDate = $request->query('publish_date');
+        $search_data =isset($_REQUEST['params'])?$_REQUEST['params']:'';
 
         // Start building the query to retrieve articles
         $query = Article::query();
@@ -36,8 +39,13 @@ class ArticleController extends Controller
             $query->whereDate('publish_date', $publishDate);
         }
 
+        // Apply the title filter if provided
+        if ($search_data) {
+            $query->where('title', 'LIKE', '%' . $search_data . '%');
+        }
+
         // Paginate the filtered results
-        $articles = $query->paginate(10); // Change the pagination limit as needed
+        $articles = $query->paginate(30); // Change the pagination limit as needed
 
         return response()->json($articles);
     }
@@ -49,6 +57,7 @@ class ArticleController extends Controller
         // Retrieve the source and publish date parameters from the request
         $source = $request->query('source_name');
         $publishDate = $request->query('publish_date');
+        $search_data =isset($_REQUEST['params'])?$_REQUEST['params']:'';
 
         // Start building the query to retrieve articles
         $query = Article::query();
@@ -71,8 +80,13 @@ class ArticleController extends Controller
             $query->whereDate('publish_date', $publishDate);
         }
 
+        // Apply the title filter if provided
+        if ($search_data) {
+            $query->where('title', 'LIKE', '%' . $search_data . '%');
+        }
+
         // Paginate the filtered results
-        $articles = $query->paginate(10); // Change the pagination limit as needed
+        $articles = $query->paginate(20); // Change the pagination limit as needed
 
         return response()->json($articles);
     }

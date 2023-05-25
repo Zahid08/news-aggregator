@@ -88,13 +88,13 @@ const NewsFeed = () => {
           <div className="w-full max-w-sm mx-auto">
             <form onSubmit={handleSubmit(submitHandler)}>
               <div className="flex flex-col mb-6 w-full">
-                <h1>Select Data Source</h1>
+                <h1 className="mb-2 font-bold">Select Data Source</h1>
                 {dataSource && dataSource.source.map((item) => (
                     <div key={item} className="flex items-center space-x-4">
                       <input
                           type="checkbox"
                           id={`checkbox-${item}`}
-                          className="text"
+                          className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                           checked={item !== undefined && dataSourceCheckboxItem && dataSourceCheckboxItem.includes(item)}
                           onChange={() => handelDataSourceCheckbox(item)}
                       />
@@ -109,13 +109,13 @@ const NewsFeed = () => {
               </div>
 
               <div className="flex flex-col mb-6 w-full">
-                <h1>Select Author</h1>
+                <h1 className="mb-2 font-bold">Select Author</h1>
                 {dataSource && dataSource.author.map((item) => (
                     <div key={item} className="flex items-center space-x-4">
                       <input
                           type="checkbox"
                           id={`checkbox-${item}`}
-                          className="text"
+                          className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                           checked={item !== undefined && dataSourceCheckboxItem && dataSourceCheckboxItem.includes(item)}
                           onChange={() => handelDataSourceCheckbox(item)}
                       />
@@ -130,13 +130,13 @@ const NewsFeed = () => {
               </div>
 
               <div className="flex flex-col mb-6 w-full">
-                <h1>Select Category</h1>
+                <h1 className="mb-2 font-bold">Select Category</h1>
                 {dataSource && dataSource.category.map((item) => (
                     <div key={item} className="flex items-center space-x-4">
                       <input
                           type="checkbox"
                           id={`checkbox-${item}`}
-                          className="text"
+                          className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                           checked={item !== undefined && dataSourceCheckboxItem && dataSourceCheckboxItem.includes(item)}
                           onChange={() => handelDataSourceCheckbox(item)}
                       />
